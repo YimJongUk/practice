@@ -1,7 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { getNoticeList } from "../../apis";
-import styles from "./Counter.module.css";
 
 const News = () => {
   const { isLoading, data, error } = useQuery(["repoData"], getNoticeList, {
@@ -22,17 +21,26 @@ const News = () => {
   // console.log("status    : ", response.status);
   // console.log("data      : ", response.data);
 
+  // const onfetchClick = async () => {
+  //   await queryClient.prefetchQuery(["Worker"], () =>
+  //     getTaskRequestWorker("0002")
+  //   );
+  // };
+
+  // const onQueryClick = async () => {
+  //   const data = await queryClient.fetchQuery(["Worker"], () =>
+  //     getTaskRequestWorker("0001")
+  //   );
+
+  //   console.log("fetchQuery return : ", data);
+  // };
+
   if (isLoading) return "Loading...";
 
   if (error) return "An error has occurred: " + error.message;
 
   return (
     <div>
-      <div style={{ display: "flex", justifyContent: "center" }}>
-        <Link to="/ex2">
-          <button className={styles.button}>다음</button>
-        </Link>
-      </div>
       <div>
         {data.map((el) => (
           <div>
