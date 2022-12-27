@@ -7,16 +7,27 @@ const clientRequest = axios.create({
   },
 });
 
-export const createGetRequest = (url, body) =>
+const createGetRequest = (url, body) =>
   clientRequest.get(url, body).then((r) => r.data);
 
 export const getNoticeList = () => createGetRequest(`/news/events`); // 공지사항
-
-const formatQueryStr = (json) => {
-  var queryString = Object.entries(json)
-    .map(([key, value]) => key + "=" + escape(value))
-    .filter((v) => v)
-    .join("&");
-
-  return queryString;
-};
+export const getCharacterInfo = (characterName) =>
+  createGetRequest(`/characters/${characterName}/siblings`); // 원정대 전체 캐릭터 정보
+export const getArmorProfiles = (characterName) =>
+  createGetRequest(`/armories/characters/${characterName}/profiles`); // 상세 캐릭터 정보
+export const getEquipment = (characterName) =>
+  createGetRequest(`/armories/characters/${characterName}/equipment`); // 검색한 캐릭터 착용 장비
+export const getAvatars = (characterName) =>
+  createGetRequest(`/armories/characters/${characterName}/avatars`); // 검색한 캐릭터 아바타 장비
+export const getCombatSkills = (characterName) =>
+  createGetRequest(`/armories/characters/${characterName}/combat-skills`); // 검색한 캐릭터 스킬 및 트라이포드
+export const getEngrabving = (characterName) =>
+  createGetRequest(`/armories/characters/${characterName}/engravings`); // 검색한 캐릭터 각인
+export const getCards = (characterName) =>
+  createGetRequest(`/armories/characters/${characterName}/cards`); // 검색한 캐릭터 장착 카드 효과
+export const getGems = (characterName) =>
+  createGetRequest(`/armories/characters/${characterName}/gems`); // 검색한 캐릭터 보석 효과
+export const getColosseums = (characterName) =>
+  createGetRequest(`/armories/characters/${characterName}/colosseums`); // 검색한 캐릭터의 pvp정보
+export const getCollectibles = (characterName) =>
+  createGetRequest(`/armories/characters/${characterName}/collectibles`); // 검색한 캐릭터의 수집품 현황

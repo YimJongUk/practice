@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 
-const Wrapper = ({ children }) => {
+const Wrapper = () => {
   return (
     <>
       <Outlet />
